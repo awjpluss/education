@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>أوج بلس | Aouj Plus Platform</title>
+    <meta name="description" content="منصة تعليمية رائدة تقدم كورسات تقنية وبرمجية احترافية.">
+    <meta property="og:title" content="أكاديمية أوج بلس التعليمية">
+    <meta property="og:description" content="ارتقِ بمهاراتك مع أفضل المعلمين والكورسات في التقنية والبرمجة.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {"50":"#eef2ff","100":"#e0e7ff","200":"#c7d2fe","300":"#a5b4fc","400":"#818cf8","500":"#6366f1","600":"#4f46e5","700":"#4338ca","800":"#3730a3","900":"#312e81","950":"#1e1b4b"},
+                        accent: "#f43f5e"
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #818cf8; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #312e81; }
+
+        body {
+            -webkit-tap-highlight-color: transparent;
+            background-color: #f8fafc;
+            color: #0f172a;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark {
+            background-color: #020617;
+            color: #f8fafc;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #4f46e5, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .typing-dot {
+            animation: typing 1.4s infinite ease-in-out both;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+        
+        /* Smooth selection style */
+        ::selection {
+            background-color: rgba(99, 102, 241, 0.3);
+            color: inherit;
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen relative overflow-x-hidden font-sans">
+
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob dark:opacity-20"></div>
+        <div class="absolute top-[-10%] right-[-10%] w-96 h-96 bg-fuchsia-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 dark:opacity-20"></div>
+        <div class="absolute bottom-[-20%] left-[20%] w-96 h-96 bg-cyan-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000 dark:opacity-20"></div>
+    </div>
+
+    <header class="fixed top-0 w-full z-50 glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <span class="text-3xl font-extrabold text-gradient tracking-tighter">أوج بلس</span>
+                </div>
+
+                <nav class="hidden md:flex space-x-8 rtl:space-x-reverse items-center">
+                    <a href="#home" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-semibold transition-colors" data-i18n="nav_home">الرئيسية</a>
+                    <a href="#courses" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-semibold transition-colors" data-i18n="nav_courses">المسارات</a>
+                    <a href="#teachers" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-semibold transition-colors" data-i18n="nav_teachers">المعلمون</a>
+                    
+                    <div class="flex items-center space-x-4 rtl:space-x-reverse border-l rtl:border-r rtl:border-l-0 border-gray-300 dark:border-gray-700 pr-4 rtl:pl-4 rtl:pr-0">
+                        <button id="themeToggleBtn" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors focus:outline-none" aria-label="Toggle Theme">
+                            <i class="fas fa-moon text-gray-600 dark:text-gray-300 text-xl"></i>
+                        </button>
+                        <button id="langToggleBtn" class="font-bold text-gray-700 dark:text-gray-300 hover:text-primary-600 transition-colors focus:outline-none px-2 py-1 rounded-md border border-gray-300 dark:border-gray-700">EN</button>
+                        <button onclick="openWizard()" class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-full font-bold transition-all shadow-lg hover:shadow-primary-500/50 transform hover:scale-105" data-i18n="nav_enroll">سجل الآن</button>
+                    </div>
+                </nav>
+
+                <div class="md:hidden flex items-center space-x-4 rtl:space-x-reverse">
+                    <button id="mobileThemeBtn" class="p-2 text-gray-600 dark:text-gray-300" aria-label="Toggle Theme">
+                        <i class="fas fa-moon text-xl"></i>
+                    </button>
+                    <button id="mobileMenuBtn" class="text-gray-700 dark:text-gray-200 hover:text-primary-600 focus:outline-none p-2" aria-label="Menu">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobileSidebar" class="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div id="sidebarContent" class="fixed top-0 right-0 h-full w-3/4 max-w-sm glass bg-white/90 dark:bg-gray-900/90 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+            <div class="p-6 flex justify-between items-center border-b border-gray-200 dark:border-gray-700">
+                <span class="text-2xl font-bold text-gradient">أوج بلس</span>
+                <button id="closeSidebarBtn" class="p-2 text-gray-500 hover:text-red-500 text-2xl"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="flex-1 overflow-y-auto py-6 px-4 flex flex-col space-y-6">
+                <a href="#home" class="mobile-link text-lg font-semibold text-gray-800 dark:text-gray-200 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" data-i18n="nav_home">الرئيسية</a>
+                <a href="#courses" class="mobile-link text-lg font-semibold text-gray-800 dark:text-gray-200 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" data-i18n="nav_courses">المسارات</a>
+                <a href="#teachers" class="mobile-link text-lg font-semibold text-gray-800 dark:text-gray-200 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" data-i18n="nav_teachers">المعلمون</a>
+                <div class="h-px bg-gray-200 dark:bg-gray-700 my-4"></div>
+                <button id="mobileLangBtn" class="text-start text-lg font-semibold text-gray-800 dark:text-gray-200 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"><i class="fas fa-language mr-2 rtl:ml-2 rtl:mr-0 text-primary-500"></i> <span data-i18n="switch_lang">Switch to English</span></button>
+                <button onclick="openWizard(); document.getElementById('closeSidebarBtn').click();" class="mt-auto w-full bg-primary-600 text-white p-4 rounded-xl font-bold text-lg shadow-lg" data-i18n="nav_enroll">سجل الآن</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="flex-grow pt-24 pb-12">
+        <section id="home" class="relative min-h-[80vh] flex items-center justify-center px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="text-center md:text-start z-10 animate-fade-in">
+                    <span class="inline-block py-1 px-3 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 font-semibold text-sm mb-4 border border-primary-200 dark:border-primary-800" data-i18n="hero_badge">🚀 المستقبل يبدأ من هنا</span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight mb-6" data-i18n="hero_title">
+                        تعلم البرمجة بذكاء مع <br/> <span class="text-gradient">أكاديمية أوج بلس</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto md:mx-0" data-i18n="hero_subtitle">
+                        نقدم لك أقوى المسارات التعليمية التي تناسب سوق العمل الحالي. من تطوير الويب إلى الذكاء الاصطناعي، ابدأ رحلتك الآن.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <button onclick="openWizard()" class="px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-primary-500/40 transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                            <span data-i18n="hero_cta">ابدأ التعلم الآن</span>
+                            <i class="fas fa-rocket text-sm"></i>
+                        </button>
+                        <a href="#courses" class="px-8 py-4 glass-card text-gray-800 dark:text-gray-200 rounded-2xl font-bold text-lg text-center transition hover:bg-gray-100 dark:hover:bg-gray-800 border-gray-300 dark:border-gray-700" data-i18n="hero_explore">استكشف المسارات</a>
+                    </div>
+                </div>
+                
+                <div class="relative z-10 hidden md:block animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="glass-card rounded-3xl p-6 relative overflow-hidden shadow-2xl">
+                        <div class="absolute top-0 left-0 w-full h-8 bg-gray-200 dark:bg-gray-800 flex items-center px-4 space-x-2 rtl:space-x-reverse">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <div class="pt-8">
+                            <pre class="text-sm text-gray-800 dark:text-green-400 font-mono overflow-x-auto"><code><span class="text-purple-600 dark:text-purple-400">const</span> student = {
+    name: <span class="text-green-600 dark:text-yellow-300">"Future Developer"</span>,
+    academy: <span class="text-green-600 dark:text-yellow-300">"Aouj Plus"</span>,
+    skills: [<span class="text-green-600 dark:text-yellow-300">"HTML"</span>, <span class="text-green-600 dark:text-yellow-300">"JS"</span>, <span class="text-green-600 dark:text-yellow-300">"AI"</span>, <span class="text-green-600 dark:text-yellow-300">"Flutter"</span>],
+    isEnrolled: <span class="text-blue-600 dark:text-blue-400">true</span>
+};
+
+<span class="text-purple-600 dark:text-purple-400">function</span> <span class="text-blue-600 dark:text-blue-400">achieveDreams</span>() {
+    console.log(<span class="text-green-600 dark:text-yellow-300">"Welcome to Aouj Plus Academy!"</span>);
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="courses" class="py-20 bg-white/50 dark:bg-gray-900/50 backdrop-blur-md">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4" data-i18n="courses_title">مساراتنا التعليمية</h2>
+                    <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto" data-i18n="courses_subtitle">اختر المسار الذي يناسب طموحك المهني. نوفر لك محتوى محدث وتطبيقات عملية.</p>
+                </div>
+
+                <div class="flex overflow-x-auto hide-scroll pb-4 mb-8 justify-start md:justify-center space-x-3 rtl:space-x-reverse snap-x" id="courseFilters">
+                    <!-- Buttons generated by JS -->
+                </div>
+
+                <div class="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8 hide-scroll snap-x snap-mandatory" id="coursesContainer">
+                    <!-- Cards generated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <section id="teachers" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4" data-i18n="teachers_title">نخبة المعلمين</h2>
+                    <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto" data-i18n="teachers_subtitle">تعلم من خبراء الصناعة الذين يمتلكون خبرة عملية واسعة.</p>
+                </div>
+
+                <div class="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 pb-8 hide-scroll snap-x snap-mandatory" id="teachersContainer">
+                    <!-- Cards generated by JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold text-gradient mb-4">أكاديمية أوج بلس</h3>
+            <p class="text-gray-500 dark:text-gray-400 mb-6" data-i18n="footer_text">منصتك الأولى لاحتراف التقنية والبرمجة.</p>
+            <div class="flex justify-center space-x-6 rtl:space-x-reverse mb-6">
+                <a href="#" class="text-gray-400 hover:text-primary-500 text-2xl transition"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-gray-400 hover:text-primary-500 text-2xl transition"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="text-gray-400 hover:text-primary-500 text-2xl transition"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p class="text-sm text-gray-400" data-i18n="footer_copy">© 2026 جميع الحقوق محفوظة - أكاديمية أوج بلس التعليمية.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toastContainer" class="fixed top-24 left-1/2 transform -translate-x-1/2 z-[100] flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Course Detail Modal -->
+    <div id="courseModal" class="fixed inset-0 z-[70] hidden items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm modal-bg" onclick="closeModal('courseModal')"></div>
+        <div class="relative w-full max-w-3xl glass-card rounded-3xl overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300 flex flex-col max-h-[90vh]">
+            <button onclick="closeModal('courseModal')" class="absolute top-4 right-4 rtl:left-4 rtl:right-auto z-10 p-2 bg-white/20 hover:bg-white/40 dark:bg-black/20 dark:hover:bg-black/40 rounded-full text-gray-800 dark:text-white backdrop-blur-md transition">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <div id="courseModalImage" class="h-48 md:h-64 bg-cover bg-center relative">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                <h3 id="courseModalTitle" class="absolute bottom-4 left-6 rtl:right-6 rtl:left-auto text-3xl font-bold text-white"></h3>
+            </div>
+            <div class="p-6 md:p-8 overflow-y-auto flex-1 custom-scrollbar">
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 rounded-lg text-sm font-bold" id="courseModalLevel"></span>
+                    <span class="px-3 py-1 bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 rounded-lg text-sm font-bold" id="courseModalDuration"></span>
+                </div>
+                <p id="courseModalDesc" class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6"></p>
+                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-4 border-b pb-2" data-i18n="modal_syllabus">منهج الدورة</h4>
+                <ul id="courseModalSyllabus" class="space-y-3 mb-8 text-gray-600 dark:text-gray-400 list-disc list-inside"></ul>
+                <div class="mt-auto">
+                    <!-- Updated: Passes Course ID dynamically -->
+                    <button id="modalEnrollBtn" class="w-full bg-primary-600 hover:bg-primary-700 text-white py-4 rounded-xl font-bold text-lg transition shadow-lg flex items-center justify-center gap-2">
+                        <span data-i18n="nav_enroll">سجل في هذا المسار</span>
+                        <i class="fas fa-arrow-left rtl:fa-arrow-left ltr:fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Smart Enrollment Wizard Modal (Expert Level Integration) -->
+    <div id="wizardModal" class="fixed inset-0 z-[80] hidden items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-md modal-bg" onclick="closeModal('wizardModal')"></div>
+        <div class="relative w-full max-w-lg bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300 border border-gray-200 dark:border-gray-800 flex flex-col max-h-[90vh]">
+            
+            <div class="bg-gray-50 dark:bg-gray-800 p-6 flex justify-between items-center border-b border-gray-200 dark:border-gray-700">
+                <div class="flex items-center gap-3">
+                    <button id="wizardBackBtn" onclick="wizardGoBack()" class="hidden text-gray-500 hover:text-primary-600 transition"><i class="fas fa-arrow-right text-xl rtl:fa-arrow-right ltr:fa-arrow-left"></i></button>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-i18n="wizard_title">التسجيل الذكي</h3>
+                </div>
+                <button onclick="closeModal('wizardModal')" class="text-gray-400 hover:text-red-500 transition"><i class="fas fa-times text-xl"></i></button>
+            </div>
+
+            <div id="wizardDynamicContent" class="p-6 md:p-8 overflow-y-auto custom-scrollbar">
+                <!-- Content Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chat FAB & Window -->
+    <button id="chatFab" class="fixed bottom-6 right-6 rtl:left-6 rtl:right-auto z-40 bg-gradient-to-r from-purple-600 to-primary-600 text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center text-2xl hover:scale-110 transition-transform focus:outline-none">
+        <i class="fas fa-robot animate-pulse-slow"></i>
+    </button>
+
+    <div id="chatWindow" class="fixed bottom-24 right-6 rtl:left-6 rtl:right-auto z-40 w-96 max-w-[calc(100vw-3rem)] bg-white dark:bg-gray-900 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden hidden opacity-0 transition-opacity duration-300 origin-bottom-right">
+        <div class="bg-gradient-to-r from-purple-600 to-primary-600 p-4 flex justify-between items-center text-white">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-xl">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg" data-i18n="chat_title">المساعد الذكي أوج</h4>
+                    <span class="text-xs text-white/80" data-i18n="chat_status">متصل الآن</span>
+                </div>
+            </div>
+            <button id="closeChatBtn" class="text-white/80 hover:text-white p-2 focus:outline-none"><i class="fas fa-times text-xl"></i></button>
+        </div>
+        
+        <div id="chatMessages" class="flex-1 p-4 overflow-y-auto h-80 bg-gray-50 dark:bg-gray-800/50 flex flex-col gap-4 custom-scrollbar">
+            <!-- Messages Here -->
+        </div>
+
+        <div class="p-3 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+            <form id="chatForm" class="flex items-center gap-2">
+                <input type="text" id="chatInput" autocomplete="off" class="flex-1 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white rounded-full px-4 py-3 outline-none focus:ring-2 focus:ring-primary-500 text-sm" placeholder="اكتب سؤالك هنا..." data-i18n-placeholder="chat_placeholder">
+                <button type="submit" class="w-12 h-12 rounded-full bg-primary-600 hover:bg-primary-700 text-white flex items-center justify-center flex-shrink-0 transition-transform active:scale-95 focus:outline-none">
+                    <i class="fas fa-paper-plane rtl:-scale-x-100"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const db = {
+            categories: ['frontend', 'backend', 'mobile', 'ai', 'sciences', 'languages'],
+            categoryIcons: {
+                frontend: 'fas fa-laptop-code', backend: 'fas fa-server', mobile: 'fas fa-mobile-alt',
+                ai: 'fas fa-brain', sciences: 'fas fa-atom', languages: 'fas fa-language'
+            },
+            courses: [
+                { id: 'c1', cat: 'frontend', titleAr: 'احتراف واجهات الويب', titleEn: 'Frontend Mastery', descAr: 'تعلم HTML, CSS, JS وإطارات العمل الحديثة مثل React.', descEn: 'Learn HTML, CSS, JS and modern frameworks like React.', img: 'https://placehold.co/600x400/3b82f6/white?text=Frontend', levelAr: 'مبتدئ إلى متوسط', levelEn: 'Beginner to Inter', durAr: '8 أسابيع', durEn: '8 Weeks', syllabusAr: ['أساسيات الويب', 'جافاسكريبت المتقدمة', 'بناء مشاريع بـ React', 'تحسين الأداء'], syllabusEn: ['Web Basics', 'Advanced JS', 'Building with React', 'Performance tuning'] },
+                { id: 'c2', cat: 'backend', titleAr: 'برمجة الخوادم بـ Node.js', titleEn: 'Backend with Node.js', descAr: 'ابنِ واجهات برمجية API قوية وسريعة باستخدام Node و Express.', descEn: 'Build robust and fast APIs using Node and Express.', img: 'https://placehold.co/600x400/10b981/white?text=Backend', levelAr: 'متوسط', levelEn: 'Intermediate', durAr: '6 أسابيع', durEn: '6 Weeks', syllabusAr: ['مفاهيم الخوادم', 'Express.js', 'قواعد البيانات MongoDB', 'التوثيق والأمان'], syllabusEn: ['Server Concepts', 'Express.js', 'MongoDB Databases', 'Auth & Security'] },
+                { id: 'c3', cat: 'mobile', titleAr: 'تطبيقات الموبايل بـ Flutter', titleEn: 'Mobile Apps with Flutter', descAr: 'طور تطبيقات تعمل على الآيفون والأندرويد بكود واحد.', descEn: 'Develop iOS and Android apps with a single codebase.', img: 'https://placehold.co/600x400/0ea5e9/white?text=Flutter', levelAr: 'مبتدئ', levelEn: 'Beginner', durAr: '10 أسابيع', durEn: '10 Weeks', syllabusAr: ['لغة Dart', 'بناء الواجهات', 'إدارة الحالة', 'رفع التطبيق للمتجر'], syllabusEn: ['Dart Language', 'UI Building', 'State Management', 'Store Deployment'] },
+                { id: 'c4', cat: 'ai', titleAr: 'مقدمة في الذكاء الاصطناعي', titleEn: 'Intro to AI', descAr: 'افهم خوارزميات تعلم الآلة وابنِ نماذج ذكية بالبايثون.', descEn: 'Understand ML algorithms and build smart models with Python.', img: 'https://placehold.co/600x400/8b5cf6/white?text=AI', levelAr: 'متقدم', levelEn: 'Advanced', durAr: '12 أسبوع', durEn: '12 Weeks', syllabusAr: ['أساسيات بايثون', 'تحليل البيانات', 'تعلم الآلة', 'الشبكات العصبية'], syllabusEn: ['Python Basics', 'Data Analysis', 'Machine Learning', 'Neural Networks'] },
+                { id: 'c5', cat: 'sciences', titleAr: 'الفيزياء التطبيقية والكمية', titleEn: 'Applied & Quantum Physics', descAr: 'اكتشف أسرار الكون من خلال محاكاة تفاعلية وتطبيقات عملية.', descEn: 'Discover universe secrets through interactive simulations.', img: 'https://placehold.co/600x400/f59e0b/white?text=Physics', levelAr: 'شامل', levelEn: 'Comprehensive', durAr: '14 أسبوع', durEn: '14 Weeks', syllabusAr: ['أساسيات الحركة والقوى', 'الديناميكا الحرارية والموائع', 'مقدمة في فيزياء الكم'], syllabusEn: ['Motion & Forces', 'Thermodynamics & Fluids', 'Intro to Quantum Physics'] },
+                { id: 'c6', cat: 'languages', titleAr: 'الإنجليزية التقنية والمهنية', titleEn: 'Tech & Professional English', descAr: 'تجاوز حاجز اللغة وانطلق في سوق العمل العالمي.', descEn: 'Break the language barrier and enter the global market.', img: 'https://placehold.co/600x400/14b8a6/white?text=English', levelAr: 'جميع المستويات', levelEn: 'All Levels', durAr: '8 أسابيع', durEn: '8 Weeks', syllabusAr: ['تأسيس القواعد والمحادثة', 'مصطلحات تقنية المعلومات', 'محاكاة المقابلات'], syllabusEn: ['Grammar & Conversation', 'IT Terminology', 'Interview Simulation'] },
+            ],
+            teachers: [
+                { id: 't1', nameAr: 'م. أحمد خالد', nameEn: 'Eng. Ahmed Khaled', roleAr: 'خبير تطوير الويب', roleEn: 'Web Dev Expert', img: 'https://placehold.co/200x200/475569/white?text=AK' },
+                { id: 't2', nameAr: 'د. سارة علي', nameEn: 'Dr. Sara Ali', roleAr: 'باحثة ذكاء اصطناعي', roleEn: 'AI Researcher', img: 'https://placehold.co/200x200/475569/white?text=SA' },
+                { id: 't3', nameAr: 'م. عمر فهد', nameEn: 'Eng. Omar Fahd', roleAr: 'مطور تطبيقات جوال', roleEn: 'Mobile App Developer', img: 'https://placehold.co/200x200/475569/white?text=OF' },
+                { id: 't4', nameAr: 'م. نورة سعد', nameEn: 'Eng. Noura Saad', roleAr: 'مهندسة برمجيات', roleEn: 'Software Engineer', img: 'https://placehold.co/200x200/475569/white?text=NS' },
+            ],
+            botResponses: {
+                ar: {
+                    price: "تختلف الأسعار حسب المسار. تبدأ من 50$ وتصل إلى 200$. يمكنك اختيار الدورة من نموذج التسجيل لمعرفة التفاصيل.",
+                    course: "لدينا مسارات في تطوير الويب، تطبيقات الجوال، والذكاء الاصطناعي. تفقد قسم 'المسارات' لمعلومات أكثر.",
+                    teacher: "يضم طاقمنا نخبة من المهندسين مثل م.أحمد، ود.سارة. تفقد قسم 'المعلمون'.",
+                    hello: "أهلاً بك! أنا المساعد أوج. كيف أخدمك؟",
+                    contact: "يسعدنا تواصلك معنا عبر:\nواتساب: +966539167059\nالبريد الإلكتروني: awj.plus.store.s@gmail.com",
+                    default: "عذراً، لم أفهم سؤالك تماماً. يمكنك السؤال عن (الكورسات، الأسعار، المعلمين، أو التواصل)."
+                },
+                en: {
+                    price: "Prices vary by track, starting from $50 up to $200.",
+                    course: "We offer tracks in Web Dev, Mobile Apps, and AI. Check the 'Courses' section.",
+                    teacher: "Our staff includes top engineers like Eng. Ahmed and Dr. Sara.",
+                    hello: "Hello! I am Aouj Assistant. How can I help you?",
+                    contact: "Connect with us via:\nWhatsApp: +966539167059\nEmail: awj.plus.store.s@gmail.com",
+                    default: "Sorry, I didn't catch that. You can ask about courses, prices, teachers, or contact info."
+                }
+            }
+        };
+
+        const i18n = {
+            ar: {
+                nav_home: "الرئيسية", nav_courses: "المسارات", nav_teachers: "المعلمون", nav_enroll: "سجل الآن",
+                switch_lang: "Switch to English", hero_badge: "🚀 المستقبل يبدأ من هنا",
+                hero_title: "تعلم البرمجة بذكاء مع <br/> <span class='text-gradient'>أكاديمية أوج بلس</span>",
+                hero_subtitle: "نقدم لك أقوى المسارات التعليمية التي تناسب سوق العمل الحالي. من تطوير الويب إلى الذكاء الاصطناعي، ابدأ رحلتك الآن.",
+                hero_cta: "ابدأ التعلم الآن", hero_explore: "استكشف المسارات",
+                courses_title: "مساراتنا التعليمية", courses_subtitle: "اختر المسار الذي يناسب طموحك المهني. نوفر لك محتوى محدث وتطبيقات عملية.",
+                teachers_title: "نخبة المعلمين", teachers_subtitle: "تعلم من خبراء الصناعة الذين يمتلكون خبرة عملية واسعة.",
+                footer_text: "منصتك الأولى لاحتراف التقنية والبرمجة.", footer_copy: "© 2026 جميع الحقوق محفوظة - أكاديمية أوج بلس التعليمية.",
+                filter_all: "الكل", filter_frontend: "واجهات الويب", filter_backend: "برمجة الخوادم", filter_mobile: "تطبيقات الموبايل", filter_ai: "الذكاء الاصطناعي", filter_sciences: "العلوم الأساسية", filter_languages: "اللغات",
+                btn_details: "التفاصيل", modal_syllabus: "منهج الدورة",
+                wizard_title: "التسجيل الذكي", 
+                chat_title: "المساعد الذكي أوج", chat_status: "متصل الآن", chat_placeholder: "اكتب سؤالك هنا...",
+                chat_welcome: "مرحباً بك في أوج بلس! كيف يمكنني مساعدتك اليوم؟ (جرب السؤال عن الكورسات، الأسعار، المعلمين، أو التواصل)"
+            },
+            en: {
+                nav_home: "Home", nav_courses: "Tracks", nav_teachers: "Teachers", nav_enroll: "Enroll Now",
+                switch_lang: "التبديل للعربية", hero_badge: "🚀 Future starts here",
+                hero_title: "Learn Coding Smartly with <br/> <span class='text-gradient'>Aouj Plus Academy</span>",
+                hero_subtitle: "We offer the strongest educational tracks fitting the current job market. From Web Dev to AI, start your journey.",
+                hero_cta: "Start Learning", hero_explore: "Explore Tracks",
+                courses_title: "Our Educational Tracks", courses_subtitle: "Choose the track that fits your ambition.",
+                teachers_title: "Elite Teachers", teachers_subtitle: "Learn from industry experts with vast practical experience.",
+                footer_text: "Your top platform for mastering tech and coding.", footer_copy: "© 2026 All Rights Reserved - Aouj Plus Academy.",
+                filter_all: "All", filter_frontend: "Frontend", filter_backend: "Backend", filter_mobile: "Mobile Apps", filter_ai: "AI", filter_sciences: "Basic Sciences", filter_languages: "Languages",
+                btn_details: "Details", modal_syllabus: "Course Syllabus",
+                wizard_title: "Smart Enrollment",
+                chat_title: "Aouj AI Assistant", chat_status: "Online", chat_placeholder: "Type your question...",
+                chat_welcome: "Welcome to Aouj Plus! How can I help you today? (Ask about courses, prices, teachers, or contact)"
+            }
+        };
+
+        let currentLang = 'ar';
+        let currentTheme = 'light';
+        let currentFilter = 'all';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            initLang();
+            renderFilters();
+            renderCourses();
+            renderTeachers();
+            setupEventListeners();
+        });
+
+        function initTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                currentTheme = 'dark';
+            } else {
+                document.documentElement.classList.remove('dark');
+                currentTheme = 'light';
+            }
+            updateThemeIcons();
+        }
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.theme = currentTheme;
+            updateThemeIcons();
+        }
+
+        function updateThemeIcons() {
+            const iconClass = currentTheme === 'dark' ? 'fa-sun' : 'fa-moon';
+            document.querySelector('#themeToggleBtn i').className = `fas ${iconClass} text-gray-600 dark:text-gray-300 text-xl`;
+            document.querySelector('#mobileThemeBtn i').className = `fas ${iconClass} text-xl`;
+        }
+
+        function initLang() {
+            if (localStorage.lang === 'en') currentLang = 'en';
+            applyTranslations();
+        }
+
+        function toggleLang() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            localStorage.lang = currentLang;
+            applyTranslations();
+            renderFilters();
+            renderCourses();
+            renderTeachers();
+            if(document.getElementById('wizardModal').classList.contains('hidden') === false) renderWizardStep();
+        }
+
+        function applyTranslations() {
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('langToggleBtn').innerText = currentLang === 'ar' ? 'EN' : 'AR';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[currentLang][key]) el.innerHTML = i18n[currentLang][key];
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (i18n[currentLang][key]) el.setAttribute('placeholder', i18n[currentLang][key]);
+            });
+            
+            document.getElementById('chatMessages').innerHTML = `
+                 <div class="flex gap-2">
+                    <div class="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0 text-primary-600 text-sm"><i class="fas fa-robot"></i></div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-2xl rounded-tr-none rtl:rounded-tl-none rtl:rounded-tr-2xl shadow-sm border border-gray-100 dark:border-gray-600 text-gray-800 dark:text-gray-200 text-sm max-w-[85%] whitespace-pre-wrap">
+                        ${i18n[currentLang].chat_welcome}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderFilters() {
+            const container = document.getElementById('courseFilters');
+            container.innerHTML = '';
+            
+            // Add 'All' button first
+            const allBtn = document.createElement('button');
+            allBtn.className = `whitespace-nowrap px-6 py-3 rounded-full font-bold text-sm md:text-base transition-all snap-center flex-shrink-0 border ${currentFilter === 'all' ? 'bg-primary-600 text-white border-primary-600 shadow-lg shadow-primary-500/30' : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-primary-500'}`;
+            allBtn.innerText = i18n[currentLang]['filter_all'];
+            allBtn.onclick = () => { currentFilter = 'all'; renderFilters(); renderCourses(); };
+            container.appendChild(allBtn);
+
+            db.categories.forEach(cat => {
+                const btn = document.createElement('button');
+                const isActive = currentFilter === cat;
+                btn.className = `whitespace-nowrap px-6 py-3 rounded-full font-bold text-sm md:text-base transition-all snap-center flex-shrink-0 border ${isActive ? 'bg-primary-600 text-white border-primary-600 shadow-lg shadow-primary-500/30' : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-primary-500'}`;
+                btn.innerText = i18n[currentLang][`filter_${cat}`];
+                btn.onclick = () => { currentFilter = cat; renderFilters(); renderCourses(); };
+                container.appendChild(btn);
+            });
+        }
+
+        function renderCourses() {
+            const container = document.getElementById('coursesContainer');
+            container.innerHTML = '';
+            const filtered = currentFilter === 'all' ? db.courses : db.courses.filter(c => c.cat === currentFilter);
+            
+            filtered.forEach((course, index) => {
+                const title = currentLang === 'ar' ? course.titleAr : course.titleEn;
+                const desc = currentLang === 'ar' ? course.descAr : course.descEn;
+                const delay = index * 100;
+
+                const card = document.createElement('div');
+                card.className = `glass-card rounded-3xl overflow-hidden flex-shrink-0 w-[85vw] md:w-auto snap-center animate-slide-up relative group cursor-pointer`;
+                card.style.animationDelay = `${delay}ms`;
+                card.onclick = () => openCourseDetails(course.id);
+                
+                card.innerHTML = `
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="${course.img}" alt="${title}" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                            <span class="bg-white text-gray-900 px-4 py-2 rounded-lg font-bold text-sm hover:bg-primary-50 transition w-full text-center">${i18n[currentLang].btn_details}</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-primary-600 dark:text-primary-400 mb-2 inline-block uppercase tracking-wider">${i18n[currentLang][`filter_${course.cat}`]}</span>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-1">${title}</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">${desc}</p>
+                        <span class="text-primary-600 dark:text-primary-400 font-bold text-sm hover:underline flex items-center gap-1">
+                            ${i18n[currentLang].btn_details} <i class="fas fa-arrow-${currentLang === 'ar' ? 'left' : 'right'} text-xs"></i>
+                        </span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderTeachers() {
+            const container = document.getElementById('teachersContainer');
+            container.innerHTML = '';
+            db.teachers.forEach((teacher, index) => {
+                const card = document.createElement('div');
+                card.className = `bg-white dark:bg-gray-800 rounded-3xl p-6 text-center border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-shadow flex-shrink-0 w-[70vw] md:w-auto snap-center animate-slide-up group`;
+                card.style.animationDelay = `${index * 100}ms`;
+                card.innerHTML = `
+                    <div class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 border-4 border-primary-50 dark:border-gray-700 group-hover:border-primary-400 transition-colors">
+                        <img src="${teacher.img}" alt="Teacher" loading="lazy" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">${currentLang === 'ar' ? teacher.nameAr : teacher.nameEn}</h3>
+                    <p class="text-sm text-primary-600 dark:text-primary-400 font-semibold">${currentLang === 'ar' ? teacher.roleAr : teacher.roleEn}</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function openCourseDetails(courseId) {
+            const course = db.courses.find(c => c.id === courseId);
+            if(!course) return;
+
+            document.getElementById('courseModalTitle').innerText = currentLang === 'ar' ? course.titleAr : course.titleEn;
+            document.getElementById('courseModalDesc').innerText = currentLang === 'ar' ? course.descAr : course.descEn;
+            document.getElementById('courseModalLevel').innerText = currentLang === 'ar' ? course.levelAr : course.levelEn;
+            document.getElementById('courseModalDuration').innerText = currentLang === 'ar' ? course.durAr : course.durEn;
+            
+            const syllabus = currentLang === 'ar' ? course.syllabusAr : course.syllabusEn;
+            document.getElementById('courseModalSyllabus').innerHTML = syllabus.map(item => `<li>${item}</li>`).join('');
+            document.getElementById('courseModalImage').style.backgroundImage = `url('${course.img}')`;
+            
+            // ربط زر التسجيل برقم الكورس المحدد ليتعرف عليه المعالج (Wizard)
+            const enrollBtn = document.getElementById('modalEnrollBtn');
+            enrollBtn.onclick = () => {
+                closeModal('courseModal');
+                setTimeout(() => openWizard(courseId), 300); // Wait for modal close transition
+            };
+            
+            openModal('courseModal');
+        }
+
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.querySelector('div.relative').classList.remove('scale-95');
+                modal.querySelector('div.relative').classList.add('scale-100');
+                document.body.style.overflow = 'hidden'; 
+            }, 10);
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.add('opacity-0');
+            modal.querySelector('div.relative').classList.remove('scale-100');
+            modal.querySelector('div.relative').classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300); 
+        }
+
+        let enrollmentState = {
+            step: 0,
+            categoryId: null,
+            courseId: null
+        };
+        const whatsappNumber = "966539167059";
+
+        function openWizard(preselectedCourseId = null) {
+            if (preselectedCourseId) {
+                // المستخدم اختار كورس محدد، نتجاوز الاختيارات ونذهب لشاشة التأكيد
+                enrollmentState = { step: 2, categoryId: null, courseId: preselectedCourseId };
+            } else {
+                // المستخدم ضغط على تسجيل عام، نبدأ من الصفر (اختيار المسار)
+                enrollmentState = { step: 0, categoryId: null, courseId: null };
+            }
+            renderWizardStep();
+            openModal('wizardModal');
+        }
+
+        function renderWizardStep() {
+            const container = document.getElementById('wizardDynamicContent');
+            const backBtn = document.getElementById('wizardBackBtn');
+            
+            // إظهار زر الرجوع فقط في الحالات المتسلسلة (تجاهله إذا دخل مباشرة لكورس محدد)
+            if (enrollmentState.step > 0 && !enrollmentState.courseId && enrollmentState.step !== 2) {
+                backBtn.classList.remove('hidden');
+            } else {
+                backBtn.classList.add('hidden');
+            }
+
+            let html = '';
+
+            // خطوة 0: اختيار المسار (القسم)
+            if (enrollmentState.step === 0) {
+                html = `<h4 class="text-xl font-bold mb-6 text-gray-800 dark:text-gray-200">${currentLang === 'ar' ? 'اختر المسار التعليمي:' : 'Select Learning Track:'}</h4>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">`;
+                
+                db.categories.forEach(cat => {
+                    const title = i18n[currentLang][`filter_${cat}`];
+                    const icon = db.categoryIcons[cat];
+                    html += `
+                        <button onclick="wizardSelectCategory('${cat}')" class="flex flex-col items-center justify-center p-4 rounded-2xl border-2 border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-primary-500 hover:bg-primary-50 dark:hover:bg-gray-700 transition-all group focus:outline-none">
+                            <div class="w-12 h-12 rounded-full bg-gray-50 dark:bg-gray-700 flex items-center justify-center mb-3 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/50 transition-colors">
+                                <i class="${icon} text-2xl text-gray-500 dark:text-gray-400 group-hover:text-primary-600 transition-colors"></i>
+                            </div>
+                            <span class="font-bold text-gray-800 dark:text-white text-sm text-center">${title}</span>
+                        </button>`;
+                });
+                html += `</div>`;
+            } 
+            // خطوة 1: اختيار الكورس من المسار المحدد
+            else if (enrollmentState.step === 1) {
+                const categoryTitle = i18n[currentLang][`filter_${enrollmentState.categoryId}`];
+                const courses = db.courses.filter(c => c.cat === enrollmentState.categoryId);
+                
+                html = `<h4 class="text-xl font-bold mb-6 text-gray-800 dark:text-gray-200">
+                            ${currentLang === 'ar' ? 'الدورات المتاحة في مسار' : 'Available courses in'} <span class="text-primary-600">${categoryTitle}</span>:
+                        </h4>
+                        <div class="grid grid-cols-1 gap-4">`;
+                
+                if(courses.length === 0) {
+                     html += `<p class="text-gray-500 text-center py-4">${currentLang === 'ar' ? 'لا توجد دورات حالياً في هذا المسار.' : 'No courses available currently.'}</p>`;
+                }
+
+                courses.forEach(course => {
+                    const title = currentLang === 'ar' ? course.titleAr : course.titleEn;
+                    const level = currentLang === 'ar' ? course.levelAr : course.levelEn;
+                    html += `
+                        <button onclick="wizardSelectCourse('${course.id}')" class="flex items-center text-start p-4 rounded-2xl border-2 border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-primary-500 hover:shadow-md transition-all focus:outline-none">
+                            <img src="${course.img}" class="w-16 h-16 rounded-xl object-cover rtl:ml-4 ltr:mr-4 hidden sm:block">
+                            <div class="flex-1">
+                                <h5 class="font-bold text-gray-900 dark:text-white text-lg mb-1">${title}</h5>
+                                <span class="text-xs font-semibold px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded">${level}</span>
+                            </div>
+                            <i class="fas fa-chevron-left rtl:fa-chevron-left ltr:fa-chevron-right text-gray-400 rtl:mr-4 ltr:ml-4"></i>
+                        </button>`;
+                });
+                html += `</div>`;
+            }
+            // خطوة 2: شاشة التأكيد الجميلة قبل الواتساب (Expert Integration)
+            else if (enrollmentState.step === 2) {
+                const course = db.courses.find(c => c.id === enrollmentState.courseId);
+                const title = currentLang === 'ar' ? course.titleAr : course.titleEn;
+                const confirmTitle = currentLang === 'ar' ? 'تأكيد التسجيل' : 'Confirm Enrollment';
+                const prepMsg = currentLang === 'ar' ? 'طلبك جاهز للإرسال إلى أكاديمية أوج بلس' : 'Your request is ready to send to Aouj Plus Academy';
+                const btnMsg = currentLang === 'ar' ? 'إرسال الطلب عبر واتساب' : 'Send Request via WhatsApp';
+
+                html = `
+                    <div class="animate-fade-in flex flex-col items-center">
+                        <div class="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-4 text-green-500 text-4xl shadow-inner">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">${confirmTitle}</h4>
+                        <p class="text-gray-500 dark:text-gray-400 mb-8 text-center text-sm">${prepMsg}</p>
+                        
+                        <!-- Premium Course Summary Card -->
+                        <div class="w-full bg-gray-50 dark:bg-gray-800/80 rounded-2xl p-4 border border-gray-200 dark:border-gray-700 mb-8 flex items-center gap-4 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-2 h-full bg-primary-500"></div>
+                            <img src="${course.img}" class="w-20 h-20 rounded-xl object-cover shadow-sm">
+                            <div>
+                                <span class="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase mb-1 block">${i18n[currentLang][`filter_${course.cat}`]}</span>
+                                <h5 class="font-bold text-gray-900 dark:text-white text-lg leading-tight">${title}</h5>
+                            </div>
+                        </div>
+
+                        <button onclick="submitToWhatsApp()" class="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-4 rounded-xl font-bold text-lg transition flex items-center justify-center gap-3 shadow-lg shadow-[#25D366]/30 transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-[#25D366]/50">
+                            <span>${btnMsg}</span>
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </button>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+        }
+
+        function wizardSelectCategory(catId) {
+            enrollmentState.categoryId = catId;
+            enrollmentState.step = 1;
+            renderWizardStep();
+        }
+
+        function wizardSelectCourse(courseId) {
+            enrollmentState.courseId = courseId;
+            enrollmentState.step = 2;
+            renderWizardStep();
+        }
+
+        function wizardGoBack() {
+            if (enrollmentState.step > 0) {
+                enrollmentState.step--;
+                renderWizardStep();
+            }
+        }
+
+        function submitToWhatsApp() {
+            const course = db.courses.find(c => c.id === enrollmentState.courseId);
+            if(!course) return;
+
+            // استخراج اسم الكورس بناءً على لغة المستخدم الحالية
+            const courseName = currentLang === 'ar' ? course.titleAr : course.titleEn;
+            
+            // صياغة الرسالة باحترافية وتوجيهها باسم الأكاديمية
+            let message = '';
+            if (currentLang === 'ar') {
+                message = `مرحباً أكاديمية أوج بلس التعليمية،\nأرغب بالتسجيل في مسار: *${courseName}*\nأرجو تزويدي بالتفاصيل وخطوات الدفع. شكراً لكم.`;
+            } else {
+                message = `Hello Aouj Plus Academy,\nI would like to enroll in the track: *${courseName}*\nPlease provide me with the details and payment steps. Thank you.`;
+            }
+
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            closeModal('wizardModal');
+        }
+
+        function setupEventListeners() {
+            document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
+            document.getElementById('mobileThemeBtn').addEventListener('click', toggleTheme);
+            document.getElementById('langToggleBtn').addEventListener('click', toggleLang);
+            document.getElementById('mobileLangBtn').addEventListener('click', toggleLang);
+
+            // Mobile Menu
+            const mobileSidebar = document.getElementById('mobileSidebar');
+            const sidebarContent = document.getElementById('sidebarContent');
+            
+            function openMenu() {
+                mobileSidebar.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileSidebar.classList.remove('opacity-0');
+                    if(currentLang === 'ar') sidebarContent.classList.remove('translate-x-full');
+                    else sidebarContent.style.transform = 'translateX(0)';
+                    document.body.style.overflow = 'hidden';
+                }, 10);
+            }
+
+            function closeMenu() {
+                mobileSidebar.classList.add('opacity-0');
+                if(currentLang === 'ar') sidebarContent.classList.add('translate-x-full');
+                else sidebarContent.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    mobileSidebar.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+
+            document.getElementById('mobileMenuBtn').addEventListener('click', openMenu);
+            document.getElementById('closeSidebarBtn').addEventListener('click', closeMenu);
+            mobileSidebar.addEventListener('click', (e) => { if (e.target === mobileSidebar) closeMenu(); });
+            document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', closeMenu));
+
+            // Navbar Scroll Effect
+            window.addEventListener('scroll', () => {
+                const nav = document.getElementById('navbar');
+                if (window.scrollY > 20) nav.classList.add('shadow-md');
+                else nav.classList.remove('shadow-md');
+            });
+
+            // Chatbot
+            const chatWindow = document.getElementById('chatWindow');
+            const chatInput = document.getElementById('chatInput');
+            const chatMessages = document.getElementById('chatMessages');
+
+            function toggleChat() {
+                if (chatWindow.classList.contains('hidden')) {
+                    chatWindow.classList.remove('hidden');
+                    if(window.innerWidth < 768) {
+                        chatWindow.classList.add('fixed', 'inset-0', 'w-full', 'max-w-full', 'h-full', 'rounded-none', 'bottom-0', 'right-0', 'left-0');
+                        chatWindow.classList.remove('bottom-24', 'right-6', 'w-96', 'rounded-3xl');
+                        document.body.style.overflow = 'hidden';
+                    }
+                    setTimeout(() => { chatWindow.classList.remove('opacity-0', 'scale-95'); chatInput.focus(); }, 10);
+                } else {
+                    chatWindow.classList.add('opacity-0', 'scale-95');
+                    document.body.style.overflow = '';
+                    setTimeout(() => {
+                        chatWindow.classList.add('hidden');
+                        if(window.innerWidth < 768) {
+                             chatWindow.classList.remove('fixed', 'inset-0', 'w-full', 'max-w-full', 'h-full', 'rounded-none', 'bottom-0', 'right-0', 'left-0');
+                             chatWindow.classList.add('bottom-24', 'right-6', 'w-96', 'rounded-3xl');
+                        }
+                    }, 300);
+                }
+            }
+
+            document.getElementById('chatFab').addEventListener('click', toggleChat);
+            document.getElementById('closeChatBtn').addEventListener('click', toggleChat);
+
+            document.getElementById('chatForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const msg = chatInput.value.trim();
+                if(!msg) return;
+
+                addChatMessage(msg, 'user');
+                chatInput.value = '';
+                showTypingIndicator();
+                
+                setTimeout(() => {
+                    removeTypingIndicator();
+                    addChatMessage(getBotResponse(msg), 'bot');
+                }, 1000 + Math.random() * 1000);
+            });
+
+            function addChatMessage(text, sender) {
+                const div = document.createElement('div');
+                div.className = `flex gap-2 ${sender === 'user' ? 'flex-row-reverse' : ''}`;
+                const avatar = sender === 'user' 
+                    ? `<div class="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center flex-shrink-0 text-gray-600 dark:text-gray-300 text-sm"><i class="fas fa-user"></i></div>`
+                    : `<div class="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0 text-primary-600 text-sm"><i class="fas fa-robot"></i></div>`;
+                const bubbleClass = sender === 'user'
+                    ? `bg-primary-600 text-white p-3 rounded-2xl rounded-tl-none rtl:rounded-tr-none rtl:rounded-tl-2xl shadow-sm text-sm max-w-[85%] whitespace-pre-wrap`
+                    : `bg-white dark:bg-gray-700 p-3 rounded-2xl rounded-tr-none rtl:rounded-tl-none rtl:rounded-tr-2xl shadow-sm border border-gray-100 dark:border-gray-600 text-gray-800 dark:text-gray-200 text-sm max-w-[85%] whitespace-pre-wrap`;
+
+                div.innerHTML = `${avatar}<div class="${bubbleClass}">${text}</div>`;
+                chatMessages.appendChild(div);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function showTypingIndicator() {
+                const div = document.createElement('div');
+                div.id = 'typingIndicator';
+                div.className = `flex gap-2`;
+                div.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0 text-primary-600 text-sm"><i class="fas fa-robot"></i></div>
+                    <div class="bg-white dark:bg-gray-700 p-3 rounded-2xl rounded-tr-none rtl:rounded-tl-none rtl:rounded-tr-2xl shadow-sm border border-gray-100 dark:border-gray-600 flex items-center gap-1 w-16">
+                        <div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div><div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div><div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div>
+                    </div>`;
+                chatMessages.appendChild(div);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function removeTypingIndicator() {
+                const ind = document.getElementById('typingIndicator');
+                if(ind) ind.remove();
+            }
+
+            function getBotResponse(query) {
+                const q = query.toLowerCase();
+                const dict = db.botResponses[currentLang];
+                
+                if(q.includes('سعر') || q.includes('بكم') || q.includes('رسوم')) return dict.price;
+                if(q.includes('كورس') || q.includes('دورة') || q.includes('مسار')) return dict.course;
+                if(q.includes('معلم') || q.includes('استاذ')) return dict.teacher;
+                if(q.includes('هلا') || q.includes('مرحبا') || q.includes('السلام')) return dict.hello;
+                if(q.includes('تواصل') || q.includes('رقم') || q.includes('واتساب') || q.includes('ايميل') || q.includes('بريد')) return dict.contact;
+                
+                return dict.default;
+            }
+        }
+    </script>
+</body>
+</html>
